@@ -139,3 +139,31 @@ filterProjectsByCategory();
 
 
 
+
+
+
+function logOut() {//fonction pour se deconnecter
+  const logOutBtn = document.getElementById("logOut");//recupere le bouton
+
+
+  if (window.localStorage.getItem("token")) {//si le token est dans le local storage
+    logOutBtn.innerHTML = "logout";//changer le texte du bouton
+
+    logOutBtn.addEventListener("click", () => {//ajouter un event listener sur le bouton
+      logOutBtn.href = window.location.href;//rediriger vers la page d'accueil
+      window.localStorage.removeItem("token");//supprimer le token du local storage
+    });
+  }
+}
+
+logOut();
+
+
+
+
+
+
+
+
+
+

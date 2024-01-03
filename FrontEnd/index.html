@@ -12,16 +12,14 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<script src="./assets/script.js" defer></script>
+	
 	
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-	<div id="adminBar" class="adminBar hidden">
-		<button id="edit_mode-btn" class="open_modal">
-		  <i class="fa-regular fa-pen-to-square"></i>
-		  Mode édition
-		</button>
+	<!--methode à revoir--> <div id="adminBar" class="adminBar hidden">
+		<button id="edit_mode-btn" class="editAdmin">
+<i class="fa-regular fa-pen-to-square"></i>Mode édition</button>
 	  </div>
 <header>
 
@@ -52,8 +50,87 @@
 	
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
-		<button id="add-project-btn" class="open-modal add-project-btn hidden" >
-            <i class="fa-regular fa-pen-to-square"></i>modifier </button>
+		<!--SECTION MODALE-->
+<aside id=" modal_section"> 
+<!-- ouvrir modale -->
+<button id="modal_open"><i class="fa-regular fa-pen-to-square"></i>modifier </button>
+
+<!-- la  modale -->
+<div id="modalProject" class="modal">
+
+  <!-- modal content -->
+  <div class="modal_content ">
+	<span class="closeBtn">&times;</span>
+
+	<div class="modal1">
+    
+    <h2>Galerie Photo</h2>
+	       <div class="galleryModal ">
+		<!--galeriephoto-->
+           </div >
+
+	<div class="addProjectModal">
+
+		<!-- deuxieme modale pour ajout projet -->
+		
+	
+		<!--ligne grise-->
+		<hr />
+		<input id = "addProjectBtn" type="submit" value="Ajouter une photo">
+	</div>
+	</div>
+
+	<!--modal2-->
+	<div class="  modal2">
+			<!--Quand l'utilisateur click sur le button de retour,
+		 modal2: display = none,
+		modal1: display = flex, et le 
+		button retour : visibility = hidden. -->
+	<h2>Ajout Photo</h2>
+	 <div class="addProject_Img">
+		 <span> <img src="assets/icons/addProject_Img.svg"  class=" addProjectLogo" alt="modalLogo"></span>
+
+		 <label for ="addProjectInput">+ Ajouter une photo</label>
+		   <input type="file" name="addProjectInput"  id="addProjectInput" >
+
+
+	<!-- test  pour la preview de l' image avant envoie
+	<input type="file" id="fileInput" onchange="previewImage()">
+<div id="previewImageContainer"></div> -->
+
+
+
+		    <!--cacher Input et utiliser Label à la place-->
+	        <span><p>jpg, png : 4mo max</p></span>
+	 </div>
+	 <span> <div class="addProjectPreview"></div></span>
+	 <!--formulaire ?-->
+
+	 <!--<form>-->
+		<label for="projectName">Nom du projet</label>
+		<input type="text" name="projectName" id="projectName">
+<!-- <label for="name">Nom :</label>
+<input type="text" id="name" name="name">
+<span id="nameError" class="error-message"></span>-->
+
+
+
+	<!---derouleur choix categories-->
+		<label for="projectCategories">Catégorie du projet</label>
+		<select name="projectCategory" id="projectCategories">
+			<!--fetch API-->	
+		</select>
+		<hr />
+		<!--cet input telecharge la photo -->
+		<input type="submit"  class="validateBtn" value="Valider">
+
+		<!--</form-->
+		</div>
+
+</div>
+</aside>
+		<!--methode à revoir <button id="add-project-btn" class="open-modal add-project-btn hidden" >
+            <i class="fa-regular fa-pen-to-square"></i>modifier </button>-->
 		<div class="filters">
 			<button id="0">Tous</button>
 		</div>
@@ -83,73 +160,12 @@
 		</ul>
 	</nav>
 </footer>
-<!--SECTION MODALE-->
-<div id="modalSection" class="modal hidden">
-	<div class="modal_content">
-	  <button class="close_btn" id="close_modal">
-		<i class="fa-solid fa-xmark"></i>
-	  </button>
-	  <h3 class="gallery_projects">Galerie Photo</h3>
-	  <div id="existing_projects"></div>
-	  <button id="add_project">Ajouter une photo</button>
-	</div>
-	<div class="modal_content-form">
-	  <div class="back_and_close-form">
-		<button class="back_btn" id="back_form-modal">
-		  <i class="fa-solid fa-arrow-left"></i>
-		</button>
-		<button class="close_btn" id="close_modal-form">
-		  <i class="fa-solid fa-xmark"></i>
-		</button>
-	  </div>
-	  <h3>Ajout photo</h3>
-	  <form id="add_project-form">
-		<div class="custom_file-upload" id="project_upload-container">
-		  <i class="fa-regular fa-image" id="project_upload-icon"></i>
-		  <button id="project_upload-btn">+ Ajouter photo</button>
-		<!--  <label for="figure"></label>-->
-		  <input
-			type="file"
-			id="image"
-			name="image"
-			accept=".png, .jpg, .jpeg"
-			style="display: none"
-		  />
-		  <p id="file_info-text">jpg, png: 4 mo max</p>
-		  <img
-			id="uploaded_project"
-			src=""
-			alt="image chargée"
-			style="display: none"
-		  />
-		</div>
 
-		<label for="title">Titre</label>
-		<input type="text" id="title" name="title" />
 
-		<label for="project_category">Catégorie</label>
-		<select id="project_category" name="category">
-			<!--test-->
-		  <option selected label=" "></option>
-		  <option value="1">Objets</option>
-		  <option value="2">Appartements</option>
-		  <option value="3">Hotels & restaurants</option>
-		</select>
-		<div class="line">
-		  <div id="form_error-message" class="hidden">
-			Veuillez remplir tous les champs.
-		  </div>
-		  <div id="form_success-message" class="form-success hidden">
-			Travail ajouté avec succès !
-		  </div>
-		</div>
+<script src="./assets/script.js"></script>
+<script src="./assets/modal.js" ></script>
 
-		<button id="btn_valider" class="submit_project" type="submit">
-		  Valider
-		</button>
-	  </form>
-	</div>
-  </div>
-  <script src="./assets/modal.js"></script>
+
+
 </body>
 </html>

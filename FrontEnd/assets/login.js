@@ -30,7 +30,8 @@ const password = document.querySelector('#password').value;
 const user = { email, password};
 const logOutBtn = document.getElementById("logOut");
 const form = document.querySelector('form');
-
+const token = window.localStorage.token 
+//set item 
 
 
 function main(){
