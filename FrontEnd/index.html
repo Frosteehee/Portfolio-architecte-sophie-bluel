@@ -17,10 +17,13 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-	<!--methode à revoir--> <div id="adminBar" class="adminBar hidden">
+	<!--methode à revoir--> 
+	<div class="adminView">
+	<div id="adminBar" class="adminBar">
 		<button id="edit_mode-btn" class="editAdmin">
 <i class="fa-regular fa-pen-to-square"></i>Mode édition</button>
 	  </div>
+	</div>
 <header>
 
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -53,8 +56,9 @@
 		<!--SECTION MODALE-->
 <aside id=" modal_section"> 
 <!-- ouvrir modale -->
-<button id="modal_open"><i class="fa-regular fa-pen-to-square"></i>modifier </button>
-
+<div class="adminView">
+<button id="modal_open"><i class="fa-regular fa-pen-to-square "></i>modifier </button>
+</div>
 <!-- la  modale -->
 <div id="modalProject" class="modal">
 
@@ -69,16 +73,12 @@
 		<!--galeriephoto-->
            </div >
 
-	<div class="addProjectModal">
-
-		<!-- deuxieme modale pour ajout projet -->
+	<!--<div class="addProjectModal">-->
 		
-	
-		<!--ligne grise-->
 		<hr />
 		<input id = "addProjectBtn" type="submit" value="Ajouter une photo">
 	</div>
-	</div>
+	<!--</div>-->
 
 	<!--modal2-->
 	<div class="  modal2">
@@ -86,10 +86,16 @@
 		 modal2: display = none,
 		modal1: display = flex, et le 
 		button retour : visibility = hidden. -->
+
+		<!--button retour icone fleche gauche à ajouter -->
+
+		
 	<h2>Ajout Photo</h2>
 	 <div class="addProject_Img">
 		 <span> <img src="assets/icons/addProject_Img.svg"  class=" addProjectLogo" alt="modalLogo"></span>
 
+	<form action="#" method="post" class="form_upload" enctype="multipart/form-data">
+		<!--cet input telecharge la photo -->
 		 <label for ="addProjectInput">+ Ajouter une photo</label>
 		   <input type="file" name="addProjectInput"  id="addProjectInput" >
 
@@ -98,15 +104,14 @@
 	<input type="file" id="fileInput" onchange="previewImage()">
 <div id="previewImageContainer"></div> -->
 
-
+ 
 
 		    <!--cacher Input et utiliser Label à la place-->
 	        <span><p>jpg, png : 4mo max</p></span>
 	 </div>
-	 <span> <div class="addProjectPreview"></div></span>
-	 <!--formulaire ?-->
+	<div class="addProjectPreview"></div>
+	 
 
-	 <!--<form>-->
 		<label for="projectName">Nom du projet</label>
 		<input type="text" name="projectName" id="projectName">
 <!-- <label for="name">Nom :</label>
@@ -124,7 +129,7 @@
 		<!--cet input telecharge la photo -->
 		<input type="submit"  class="validateBtn" value="Valider">
 
-		<!--</form-->
+	</form>
 		</div>
 
 </div>

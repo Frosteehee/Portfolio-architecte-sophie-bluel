@@ -1,6 +1,3 @@
-// Importez les fonctions
-//import { createProjectFormData, postApi } from './modal.js';
-
 
 
 //Variables globales
@@ -21,6 +18,9 @@ function main(){
  /* getGalleryProjects();
  displayProjectsModal();
     switchModal();
+    uploadProject();
+    deleteProject();
+  
  */
 
 }
@@ -30,7 +30,7 @@ function main(){
 //************** */ ouvrir et fermer la modale
 openBtn.onclick = function() { 
   modal.style.display = "block"; 
-modal1.style.display = "block";//au clic il n'y a toujours que la modal1 qui s'ouvre
+modal1.style.display = "flex";//au clic il n'y a toujours que la modal1 qui s'ouvre
 modal2.style.display = "none";
 }
 
@@ -38,15 +38,8 @@ closeBtn.onclick = function() {
   modal.style.display = "none";
 }
 
-window.onclick = function(event) {
- // if (event.target == modal) {
-   // modal.style.display = "none"; //fermer la modale en cliquant en dehors du bouton 
- // }
 
-  if (event.target == galleryModal) {
-    galleryModal.style.display = "none";
-  }
-}
+
 
 //recuperer les projets de la galerie depuis l'API
 
@@ -63,8 +56,8 @@ getGalleryProjects();
 
 async function displayProjectsModal(){
 
-const modalProjects = await getGalleryProjects();
-for (let i = 0; i < modalProjects.length; i++) {
+const modalProjects = await getGalleryProjects();//recupere les projets de la galerie depuis l'API via la fonction getGalleryProjects
+for (let i = 0; i < modalProjects.length; i++) {//boucle for pour parcourir les donnees de l'api
 
   // figure
 const figure = modalProjects[i];
@@ -110,11 +103,11 @@ function switchModal() {
     const modal1 = document.querySelector('.modal1')
     const modal2 = document.querySelector('.modal2')
 
-    if (modal1.style.display === 'block') {
+    if (modal1.style.display === 'flex') {
         modal1.style.display = 'none'
         modal2.style.display = 'flex'
     } else {
-        modal1.style.display = 'block'
+        modal1.style.display = 'flex'
         modal2.style.display = 'none'
     }
 }
@@ -139,6 +132,85 @@ categories.then((data) => {
   });
 });
 
+// Envoyer les données du formulaire à l'API
+async function uploadProject(event) {
+  event.preventDefault();
+  const projectName = document.getElementById("projectName").value;
+  const projectCategory = document.getElementById("projectCategories").value; 
+  const fileInput = document.querySelector('input[type="file"]');
+  const token = window.localStorage.getItem("token").replace(/['"]+/g, '');
 
+  
+  const formData = new FormData(); //multipart ne fonctionne pas ?
+  formData.append("image", fileInput.files[0]);//recupere l'image
+  formData.append("title", projectName);//recupere le titre
+  formData.append("category", projectCategory);//recupere la categorie
+
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: formData   //multipart ne fonctionne pas 
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    
+    //  getGalleryProjects();
+     // displayProjects();
+      console.log("it works !");
+    } else {
+      console.error("Nope");
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+}
+
+const formUpload = document.querySelector(".form_upload");
+formUpload.addEventListener("submit", uploadProject);
+
+//comment adapter la taille des images/ ajouter une classe ?
+
+
+/////Delete project
+//function deleteProject(event) {
+const deleteIcon = document.querySelector(".deleteIcon");
+
+deleteIcon.addEventListener("click", async (e) => { //addEventlistener sur l'icone delete ne fonctionne pas ? /null
+  e.preventDefault();
+  e.stopPropagation();
+  const deleteIcon = article.id;
+
+  console.log(deleteIcon);
+  const response = await fetch(
+    `http://localhost:5678/api/works/${id}`,
+    {
+      method: "DELETE",
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+       },
+      body: ''
+    });
+  if (!response.ok) {
+    throw new Error('Request failed');
+    
+  } else {
+    console.log('Photo supprimée avec succès');
+    projectFigure.remove();
+  }
+}
+  )
+  console.log("deleteIcon");
+
+//}
+
+
+
+  
 
 
