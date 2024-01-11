@@ -63,6 +63,12 @@ header {
 	margin-top: 50px;
 	align-items: center;
 }
+#logoIG{
+	width: 22px;
+	height: 22px;
+	flex-shrink: 0;
+	}
+
 section {
 	margin: 50px 0
 }
@@ -87,7 +93,8 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
+	margin-bottom: 40px;
 }
 nav ul {
 	display: flex;
@@ -101,8 +108,14 @@ nav li {
 }
 
 li:hover {
-	color: #B1663C;
+	color: black;
+	font-weight: bold;
 }
+
+nav a {
+	text-decoration: none;
+	color: inherit;
+  }
 
 .login {
 	display: flex;
@@ -112,6 +125,7 @@ li:hover {
     justify-content: center;
     align-items: center;
 	height: auto;
+
 }
 
 form {
@@ -131,6 +145,8 @@ font-size: 14px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
+margin:5px 0px 5px ;
+line-height:16.42px;
 
 }
 
@@ -148,6 +164,10 @@ display: flex;
 justify-content: flex-end;
 }
 
+footer nav li {
+	padding: 0 10px;
+	font-size: 14px;
+}
 
 #logIn{
 	border: none;
@@ -160,13 +180,15 @@ justify-content: flex-end;
 height: 36px;
 flex-shrink: 0;
 margin-left: 100px;
-
+margin-top: 20px;
 
 }
 
 
 input{
 	border: none;
+	margin-bottom: 20px;
+
 }
 
 #email, #password {
@@ -174,7 +196,7 @@ input{
 height: 51px;
 flex-shrink: 0;
 	background-color:white;
-	
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	
 }
 
@@ -188,4 +210,8 @@ line-height: normal;
 text-decoration-line: underline;
 border : none;
 background-color:rgba(255, 254, 248, 1) ;
+}
+
+#logOut{
+	font-weight:bold;
 }

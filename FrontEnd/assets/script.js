@@ -71,10 +71,8 @@ async function getCategories(){
 }
 
 async function displayCategories(){
-  const projectsCategories = await getCategories();
-  console.log(projectsCategories);
-
-  projectsCategories.forEach((category) => {
+    const projectsCategories = await getCategories();
+    projectsCategories.forEach((category) => {
     const sectionFilters = document.querySelector(".filters");
     const filterProjects = document.createElement("button");
 
@@ -83,7 +81,6 @@ async function displayCategories(){
     filterProjects.id = category.id;
     sectionFilters.appendChild(filterProjects);
   });
-
 }
 displayCategories();
 
@@ -98,8 +95,6 @@ buttons.forEach(button => {//boucle pour parcourir les boutons
   button.addEventListener("click", (e) => {//ajout d'un event listener sur chaque bouton
   button = e.target.id;//recuperation de l'id du bouton cliqué
   sectionGallery.innerHTML = "";//vider la section gallery^
-  console.log(button);
-
 
 if (button !== "0") {//si l'id du bouton est différent de 0 ("tous")
 const galleryFiltered = projects.filter((project) => {//filtrer les projets par catégorie
@@ -107,8 +102,6 @@ const galleryFiltered = projects.filter((project) => {//filtrer les projets par 
 
 }
 );
-console.log(galleryFiltered);
-
 
 //quand je fais un For Each cela me creer autant d img/figure que de projets dans chaque categorie
 for (let i = 0; i < galleryFiltered.length; i++) {

@@ -2,7 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+* {
+	cursor: default;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,13 +30,26 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
+
+body{ 
+	width: 100%;
 	background-color:rgba(255, 254, 248, 1);
+
+}
+.main_container {
+	max-width: 1140px;
+	line-height: 1;
+	
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
 }
 ol, ul {
 	list-style: none;
+
 }
+
+
 blockquote, q {
 	quotes: none;
 }
@@ -48,12 +63,7 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
-body {
-	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
-	font-size: 14px;
-}
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -97,11 +107,25 @@ nav li {
 }
 
 li:hover {
-	color: #B1663C;
+	color: black;
+	font-weight: bold;
 }
+
+nav a {
+	text-decoration: none;
+	color: inherit;
+  }
+
+#logoIG{
+width: 22px;
+height: 22px;
+flex-shrink: 0;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
+	
 }
 #introduction figure {
 	flex: 1
@@ -113,14 +137,17 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
+	margin-bottom: 0.9em;
+	
+margin-right: 85px;
+	gap:10px;
 }
 #portfolio h2 {
 	text-align: center;
@@ -134,11 +161,14 @@ button {
 	background-color: rgba(255, 254, 248, 1);
 	border: 1px solid #1D6154;
 	margin : 10px; 
-padding-left: 15px;
-padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 	height: 40px;
 	text-align: center;
 	border-radius: 60px ;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
 }
 
 button:hover {
@@ -154,22 +184,36 @@ button:hover {
 	height: 50px;
 }
 
+#portfolio {
+
+	width: 88%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	margin-left:50px;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+
 }
 
 .gallery img {
 	width: 100%;
-
 }
+
 #contact {
 	width: 50%;
-margin: auto;
+    margin: auto;
 }
+
 #contact > * {
 	text-align: center;
 
@@ -209,14 +253,23 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+footer{
+	width: 100%;
+    height: 60px;
+    background-color:white;
+}
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
 
+footer nav li {
+	padding: 0 10px;
+	font-size: 14px;
+}
   
-/******* JAVASCRIPT PROJETS *********/
+/******* JAVASCRIPT PROJETS *********
 .projets-section {
 	width: 100%;
 	margin: 50px 0 80px 0;
@@ -260,7 +313,7 @@ footer nav ul {
 	object-fit: cover;
   }
 
-  
+  */
 /************************* User Loged ********************/
 
 
@@ -297,6 +350,7 @@ nav {
 	cursor: pointer;
   }
 
+
 /************************* modale ********************/
 
 .hidden {
@@ -306,22 +360,37 @@ nav {
   .hide {
 	display: none;
 }
-#modal_section{
+/*
+#modalSection{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-position: relative;
-cursor : pointer;
+position: absolute;
+width: 60%;
+background-color: #1D6154;
+
+
 	
+}*/
+
+#modal_open {
+border:none;
+margin-left:40px;
+cursor: pointer;
 }
 
+.adminBtn{
+margin-left:170px;
+display: flex;
+margin-bottom:40px ;
+}
 
 /* The Modal (background) */
 .modal {
 	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
+	position:fixed; /* Stay in place */
 	z-index: 1; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
+	padding-top: 150px; /* Location of the box */
 	left: 0;
 	top: 0;
 	width: 100%; /* Full width */
@@ -329,59 +398,86 @@ cursor : pointer;
 	overflow: auto; /* Enable scroll if needed */
 	background-color: rgb(0,0,0); /* Fallback color */
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	color:red;
 	
   }
-  
+/*
+  .modal_content{
+	
+	  background-color: red;
+	  margin: auto;
+	  padding: 20px;
+	  border: 1px solid #888;
+color:blue;
+	  position: fixed;
+  } */
+  .modalTxt{
+	font-family: Work Sans;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin:50px 0px;
+    color: #000000;
+  }
 
 .galleryModal {
-    width: 70%;
-	left: 15%;
-	top:10%;
+    width: 80%;
+	left: 10%;
     display: grid;
     grid-template-columns:1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;;
-
     grid-row-gap: 20px;
     position: relative;
     height: 50%;
     justify-items: center;
 	margin:0;
 	padding: 0;
-}
-
-
-
+	/*background-color: grey;*/
+	
+  }
+  
  .projectFigureModal {
-margin:0;
-padding:0;
-align-items: center;
-width: 80%;
- }
+   margin:0;
+   padding:0;
+   align-items: center;
+   width: 80%;
+ 
+
+}
+ 
   
 
 .imgFigureModal {
 width: 100%;
-	}
+}
 
 
 .deleteIcon{
-	width: 20px;
+	width: 15px;
 	position: absolute;
-	height: 20px;
+	height: 15px;
 	background-color: #000;
+	margin-left:12%;
+	margin-top:5px;
 }
 
   /* Modal Content */
   .modal_content {
 	border-radius: 10px;
-background: #FFF;
+/*background: #FFF;*/
 	margin: auto;
-	padding: 20px;
+	padding: 30px;
 	border: 1px solid #888;
-	width: 50%;
-	/*height: 60%;
-*/
+	width: 38%;
+background-attachment:local;
+overflow:auto;
+
+	/*:inherit;*/
+	background-color: rgba(255, 255, 255, 1);
   }
+
   
   /* The Close Button */
   .closeBtn {
@@ -401,7 +497,7 @@ background: #FFF;
 
 hr{
   color: #B3B3B3;
-  width: 420px;
+  width: 80%;
   height: 0px;
   border: 1px solid #B3B3B3;
   position: relative;
@@ -437,20 +533,156 @@ padding: 0;
 .modal1{
 	display: flex;
 	flex-direction: column;
+	
+	
 }
-
+/************************Modal2*********************/
 .modal2{
 	display: flex;
 	flex-direction: column;
 }
 
+.modal2 hr{
+	margin-top: 10%;
+}
+
+input[type="text"]{
+	width: 100%;
+	height: 40px;
+	
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#projectCategories{
+	width: 100%;
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
 .addProjectLogo{
 
-	width: 20%;
-	height: 10%;
+	width: 100%;
+	
 	flex-shrink: 0;
 	color: white;
+/*background-color: blue;*/
+}
+
+.addProjectLabel{
+
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border: none;
+	border-radius: 35px;
+	background-color:#1D6154;
+	width: 237px;
+	height: 36px;
+	flex-shrink: 0;
+	color:black;
+	font-family: syne;
+	margin-bottom: 40px;
+	flex-shrink: 0;
+background-color: grey;
+}
+
+#UploadImageContainer
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+
+	/*background-color: aquamarine;*/
+}
+
+#projectInfo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 70%;
+	height: 20%;
+	border: none;
+	margin: auto;
+	/*margin-top:5%;
+	*/
+}
+
+#projectInfo label{
+margin:10px;
 
 }
 
+.validateBtn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border: none;
+	border-radius: 35px;
+	background-color:#1D6154;
+	width: 237px;
+	height: 36px;
+	flex-shrink: 0;
+	color: white;
+	font-family: syne;
+	margin-top: 20px;
+}
 
+#formUpload{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	
+	
+}
+
+#previewImageContainer{
+	width: 420px;
+	height: 169px;
+	top: 786px;
+	left: 510px;
+	border-radius: 3px;
+	
+	/*width: 80%;
+	/*height: 80%;*/
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	background-color:rgba(232, 241, 246, 1);
+	/*margin-left: 30%;	
+*/
+
+}
+
+.previewImage{
+
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	object-fit: contain;
+}
+
+#arrowBack{
+	border: none;
+}
+
+#arrowBack:hover{
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 1);
+}

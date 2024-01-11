@@ -16,14 +16,18 @@
 	
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
+
+	
 <body>
-	<!--methode à revoir--> 
 	<div class="adminView">
-	<div id="adminBar" class="adminBar">
-		<button id="edit_mode-btn" class="editAdmin">
-<i class="fa-regular fa-pen-to-square"></i>Mode édition</button>
-	  </div>
-	</div>
+		<div id="adminBar" class="adminBar">
+			<button id="edit_mode-btn" class="editAdmin">
+	<i class="fa-regular fa-pen-to-square"></i>Mode édition</button>
+		  </div>
+		</div>
+	<div class="main_container">
+	<!--methode à revoir--> 
+	
 <header>
 
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -32,7 +36,7 @@
 			<li> projets</li>
 			<li>contact</li>
 			<li><a href=login.html id ="logOut"> login </a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li><img src="./assets/icons/instagram.png" id="logoIG" alt="Instagram"></li>
 		</ul>
 		
 	</nav>
@@ -52,87 +56,71 @@
 	
 	
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<!--SECTION MODALE-->
-<aside id=" modal_section"> 
-<!-- ouvrir modale -->
-<div class="adminView">
-<button id="modal_open"><i class="fa-regular fa-pen-to-square "></i>modifier </button>
+		<div class="adminBtn">
+		<h2>Mes Projets</h2>  
+		<span id="modal_open" class="adminView"><i class="fa-regular fa-pen-to-square "></i> modifier </span>
 </div>
+
+		<!--******************SECTION MODALE********************-->
+<!-- ouvrir modale -->
+		
+
+<aside id="modalSection"> 
+
 <!-- la  modale -->
 <div id="modalProject" class="modal">
 
-  <!-- modal content -->
+  <!-- le contenu de la modale -->
   <div class="modal_content ">
 	<span class="closeBtn">&times;</span>
 
-	<div class="modal1">
-    
-    <h2>Galerie Photo</h2>
-	       <div class="galleryModal ">
-		<!--galeriephoto-->
-           </div >
-
-	<!--<div class="addProjectModal">-->
-		
-		<hr />
+<!--la modal1 -->	
+    <article class="modal1">
+        <h2 class="modalTxt">Galerie Photo</h2>
+			<!--galeriephoto-->
+	       <div class="galleryModal"></div>
+			<!--ligne grise-->
+		<hr>
 		<input id = "addProjectBtn" type="submit" value="Ajouter une photo">
+	</article>
+
+	<!--la modal2-->
+	<article class="modal2">
+		<button id="arrowBack"> <i class="fa-solid fa-arrow-left"></i></button>
+	    <h2>Ajout Photo</h2>
+		<form action="#" method="post" class="form_upload" enctype="multipart/form-data">
+<!--div class="addProject_Img"-->
+	<div id="previewImageContainer"> <!-- nouvel emplacement-->
+		<!--input uploadImg-->
+	    
+		    <div id="UploadImageContainer">
+			    <span><img src="assets/icons/addProject_Img.svg"  class=" addProjectLogo" alt="modalLogo"></span>
+		            <label for ="addProjectInput" class="addProjectLabel">+ Ajouter une photo</label>
+		                <input type="file" name="addProjectInput"  id="addProjectInput" class ="hidden">
+					<!--Test	<input type="file" id="imageUpload">
+<div id="imagePreview"></div>-->
+	         </div>
+		        <span>jpg, png : 4mo max</span>
 	</div>
-	<!--</div>-->
-
-	<!--modal2-->
-	<div class="  modal2">
-			<!--Quand l'utilisateur click sur le button de retour,
-		 modal2: display = none,
-		modal1: display = flex, et le 
-		button retour : visibility = hidden. -->
-
-		<!--button retour icone fleche gauche à ajouter -->
-
-		
-	<h2>Ajout Photo</h2>
-	 <div class="addProject_Img">
-		 <span> <img src="assets/icons/addProject_Img.svg"  class=" addProjectLogo" alt="modalLogo"></span>
-
-	<form action="#" method="post" class="form_upload" enctype="multipart/form-data">
-		<!--cet input telecharge la photo -->
-		 <label for ="addProjectInput">+ Ajouter une photo</label>
-		   <input type="file" name="addProjectInput"  id="addProjectInput" >
-
-
-	<!-- test  pour la preview de l' image avant envoie
-	<input type="file" id="fileInput" onchange="previewImage()">
-<div id="previewImageContainer"></div> -->
-
- 
-
-		    <!--cacher Input et utiliser Label à la place-->
-	        <span><p>jpg, png : 4mo max</p></span>
-	 </div>
-	<div class="addProjectPreview"></div>
-	 
-
-		<label for="projectName">Nom du projet</label>
-		<input type="text" name="projectName" id="projectName">
-<!-- <label for="name">Nom :</label>
-<input type="text" id="name" name="name">
-<span id="nameError" class="error-message"></span>-->
-
-
-
-	<!---derouleur choix categories-->
-		<label for="projectCategories">Catégorie du projet</label>
-		<select name="projectCategory" id="projectCategories">
+			 <!--div previewImage end-->
+    <div id="projectInfo">
+		<label for="projectName">Titre</label>	
+		    <input type="text" name="projectName" id="projectName">
+           <!-- <span id="nameError" class="error-message"></span>-->
+	       <!---derouleur choix categories-->
+		       <label for="projectCategories">Catégorie</label>
+		          <select name="projectCategory" id="projectCategories">
 			<!--fetch API-->	
-		</select>
-		<hr />
+		          </select>
+	</div>
+		<hr>
 		<!--cet input telecharge la photo -->
 		<input type="submit"  class="validateBtn" value="Valider">
-
-	</form>
-		</div>
-
-</div>
+<!--/div-->
+		</form>
+	</article>
+  </div>
+  </div>
 </aside>
 		<!--methode à revoir <button id="add-project-btn" class="open-modal add-project-btn hidden" >
             <i class="fa-regular fa-pen-to-square"></i>modifier </button>-->
@@ -157,7 +145,7 @@
 		</form>
 	</section>
 </main>
-
+</div><!-- fin de main_container-->
 <footer>
 	<nav>
 		<ul>
@@ -173,4 +161,5 @@
 
 
 </body>
+
 </html>
