@@ -1,30 +1,255 @@
+//Variables globales
+const modal = document.querySelector(".modal "); //recupere le modal*
+const modal1 = document.querySelector(".modal1"); //recupere le modal1*
+const modal2 = document.querySelector(".modal2"); //recupere le modal2*
+const modalContent = document.querySelector(".modal_content");
+const galleryModal = document.querySelector(".galleryModal");
+const openBtn = document.getElementById("modal_open");//recupere le bouton qui ouvre le modal
+const closeBtn = document.getElementsByClassName("closeBtn")[0];//recupere le span qui ferme le modal
+const logOutBtn = document.getElementById("logOut");//recupere le bouton de deconnexion
+const token = window.localStorage.getItem("token");//recupere le token du local storage
+//local storage vs session storage
 
-const checkTokenLogin = () => {
-    const tokenAuth = localStorage.getItem("token");
-    const adminBar = document.getElementById("admin_bar");
-    const sectionFilters = document.querySelector(".filters");
-    const modifierBtn = document.getElementById("add_project-btn");
+
+const modalProjects  =  getGalleryProjects();//recupere les projets de la galerie depuis l'API
+//const "token"= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4"
+
+function main(){
+ /* getGalleryProjects();
+ displayProjectsModal();
+    switchModal();
+    uploadProject();
+    deleteProject();
+  
+ */
 
 }
-checkTokenLogin();
 
-function logOut() {//fonction pour se deconnecter
-    const logOutBtn = document.getElementById("logOut");//recupere le bouton
+//******************* ouvrir et fermer la modale
 
+openBtn.onclick = function() { 
+  modal.style.display = "block"; 
+modal1.style.display = "flex";//au clic il n'y a toujours que la modal1 qui s'ouvre
+modal2.style.display = "none";
+}
+
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+//  window.location.reload();
+}
+
+
+
+
+//********************recuperer les projets de la galerie depuis l'API
+
+async function getGalleryProjects() {
+  const response = await fetch ("http://localhost:5678/api/works");
+return await response.json();
+}
+getGalleryProjects();
+
+
+
+//**********************afficher les projets dans la modale
+
+
+async function displayProjectsModal(){
+
+  const modalProjects = await getGalleryProjects();
   
-    if (window.localStorage.getItem("token")) {//si le token est dans le local storage
-      logOutBtn.innerHTML = "logout";//changer le texte du bouton
+  for (let i = 0; i < modalProjects.length; i++) {
   
-      logOutBtn.addEventListener("click", () => {//ajouter un event listener sur le bouton
-        logOutBtn.href = window.location.href;//rediriger vers la page d'accueil
-        window.localStorage.removeItem("token");//supprimer le token du local storage
-      });
-    }
+    // figure/Projet
+    const figure = modalProjects[i];
+    const projectFigure = document.createElement("figure");
+    projectFigure.dataset.id = "Figure"+ i;
+    projectFigure.classList.add("projectFigureModal");
+  
+    //icone delete
+    const containerDelete = document.createElement('div');
+    containerDelete.classList.add("containerDelete");
+    const deleteIcon = document.createElement('img');
+    deleteIcon.src="./assets/icons/trash-can-solid.svg";
+    deleteIcon.classList.add("deleteIcon");
+    deleteIcon.id = `deleteIcon-${i}`; // Ajoute un ID unique à chaque icône de suppression
+    /*si j upload plusieurs fois la meme image, en cliquant sur l'icone de suppression peu importe laquelle,
+    c'est la derniere image qui est supprimee */
+
+    
+    // Supprimer un projet de la galerie depuis la modale en cliquant sur l'icône de suppression
+    deleteIcon.addEventListener('click', async (event) => {
+    // Supprime la figure de l'API
+    await deleteFigureFromAPI(figure.id);
+    // Supprime la figure du DOM
+    projectFigure.remove();
+});
+  
+    // Image
+    const imageFigure = document.createElement("img");
+    imageFigure.src = figure.imageUrl;
+    imageFigure.classList.add("imgFigureModal");
+  
+    //parents/enfants
+    projectFigure.appendChild(containerDelete);
+    galleryModal.appendChild(projectFigure);
+    projectFigure.appendChild(imageFigure);
+    containerDelete.appendChild(deleteIcon);
   }
+}
+
+displayProjectsModal();
+
+
+//**************************Supprimer un projet de la galerie depuis l'API
+deleteFigureFromAPI = async (id) => {
+  const token = window.localStorage.getItem("token")//.replace(/['"]+/g, '');
+  const response = await fetch(`http://localhost:5678/api/works/${id}`, {
+      method: "DELETE",
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+       },
+      body: ''
+    });
+
+    //revoir la condition 
+    
+  if (!response.ok) {
+    throw new Error('Request failed');
+  } else {
+    console.log('Photo supprimée avec succès');
+    
+  }
+}
+
+
+deleteFigureFromAPI();
+
+
+const addProjectInput = document.getElementById('addProjectInput');
+const previewContainer = document.getElementById('previewImageContainer');
+
+addProjectInput.addEventListener('change', function () {
+  const addFile = this.files[0];
+  if (addFile) {
+    const reader = new FileReader();
+    reader.addEventListener('load', function () {
+      const img = document.createElement('img');
+      img.src = this.result;
+      previewContainer.innerHTML = '';
+      previewContainer.appendChild(img);
+     img.classList.add("previewImage");
+    });
+    reader.readAsDataURL(file);
+  }
+});
+
+
+//*********************Acceder à modal2 depuis modal1
+
+const addProjectBtn = document.getElementById('addProjectBtn') //
+    addProjectBtn.addEventListener ("click", switchModal)
+function switchModal() {
+    const modal1 = document.querySelector('.modal1')
+    const modal2 = document.querySelector('.modal2')
+
+    if (modal1.style.display === 'flex') {
+        modal1.style.display = 'none'
+        modal2.style.display = 'flex'
+    } else {
+        modal1.style.display = 'flex'
+        modal2.style.display = 'none'
+    }
+}
+
+switchModal();
+
+//*********************Acceder à modal1 depuis modal2 (fleche retour)
+
+const arrowBack = document.getElementById('arrowBack') //
+    arrowBack.addEventListener ("click", switchModal2)
+function switchModal2() {
+    const modal1 = document.querySelector('.modal1')
+    const modal2 = document.querySelector('.modal2')
+
+    if (modal2.style.display === 'flex') {
+        modal2.style.display = 'none'
+        modal1.style.display = 'flex'
+    } else {
+        modal2.style.display = 'flex'
+        modal1.style.display = 'none'
+    }
+
+
+}
+
+//***********************recuperer les categories depuis l'API pour le menu deroulant
+ 
+async function getCategories(){
+  const projectsCategories = await fetch ("http://localhost:5678/api/categories");
+  return await projectsCategories.json();
+}
+const select = document.getElementById('projectCategories');
+const categories = getCategories();
+categories.then((data) => {
+  data.forEach((category) => {
+    const option = document.createElement('option');
+    option.value = category.id;
+    option.innerText = category.name;
+    select.appendChild(option);
+  });
+});
+
+
+// ***********************Envoyer les données du formulaire à l'API
+
+async function uploadProject(event) {
+ event.preventDefault();
   
-  logOut();
+  const projectName = document.getElementById("projectName").value;
+  const projectCategory = document.getElementById("projectCategories").value; 
+  //const fileInput = document.querySelector('input[type="file"]').files[0];
+  const addProjectInput = document.getElementById('addProjectInput');
+  const token = window.localStorage.getItem("token").replace(/['"]+/g, '');
+  const validateBtn = document.querySelector("validateBtn");
 
+  const formData = new FormData(); //multipart ne fonctionne pas ?
+  formData.append("image", addProjectInput.files[0]);//recupere l'  image  .files[0]
+  formData.append("title", projectName);//recupere le titre
+  formData.append("category", projectCategory);//recupere la categorie
 
+ 
 
+const formUpload = document.querySelector(".form_upload");
+formUpload.addEventListener("submit", uploadProject);
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: formData   //multipart ne fonctionne pas 
+    });
 
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      console.log("it works !");
+      window.location.reload();
+     // getGalleryProjects();
+      //displayProjects();
+    } 
+    else {
+      console.error("Nope");
+      alert("Veuillez remplir tous les champs");
+    }
 
+  } catch (error) {
+    alert("Veuillez remplir tous les champs");
+    console.error("An error occurred:", error);
+  }
+}
+const formUpload = document.querySelector(".form_upload");
+formUpload.addEventListener("submit", uploadProject);
+ 

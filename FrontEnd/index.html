@@ -12,17 +12,22 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<script src="./assets/script.js" defer></script>
+	
 	
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
+
+	
 <body>
-	<div id="adminBar" class="adminBar hidden">
-		<button id="edit_mode-btn" class="open_modal">
-		  <i class="fa-regular fa-pen-to-square"></i>
-		  Mode édition
-		</button>
-	  </div>
+	<div class="adminView">
+		<div id="adminBar" class="adminBar">
+			<button id="edit_mode-btn" class="editAdmin">
+	<i class="fa-regular fa-pen-to-square"></i>Mode édition</button>
+		  </div>
+		</div>
+	<div class="main_container">
+	<!--methode à revoir--> 
+	
 <header>
 
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -31,7 +36,7 @@
 			<li> projets</li>
 			<li>contact</li>
 			<li><a href=login.html id ="logOut"> login </a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li><img src="./assets/icons/instagram.png" id="logoIG" alt="Instagram"></li>
 		</ul>
 		
 	</nav>
@@ -51,9 +56,74 @@
 	
 	
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<button id="add-project-btn" class="open-modal add-project-btn hidden" >
-            <i class="fa-regular fa-pen-to-square"></i>modifier </button>
+		<div class="adminBtn">
+		<h2>Mes Projets</h2>  
+		<span id="modal_open" class="adminView"><i class="fa-regular fa-pen-to-square "></i> modifier </span>
+</div>
+
+		<!--******************SECTION MODALE********************-->
+<!-- ouvrir modale -->
+		
+
+<aside id="modalSection"> 
+
+<!-- la  modale -->
+<div id="modalProject" class="modal">
+
+  <!-- le contenu de la modale -->
+  <div class="modal_content ">
+	<span class="closeBtn">&times;</span>
+
+<!--la modal1 -->	
+    <article class="modal1">
+        <h2 class="modalTxt">Galerie Photo</h2>
+			<!--galeriephoto-->
+	       <div class="galleryModal"></div>
+			<!--ligne grise-->
+		<hr>
+		<input id = "addProjectBtn" type="submit" value="Ajouter une photo">
+	</article>
+
+	<!--la modal2-->
+	<article class="modal2">
+		<button id="arrowBack"> <i class="fa-solid fa-arrow-left"></i></button>
+	    <h2>Ajout Photo</h2>
+		<form action="#" method="post" class="form_upload" enctype="multipart/form-data">
+<!--div class="addProject_Img"-->
+	<div id="previewImageContainer"> <!-- nouvel emplacement-->
+		<!--input uploadImg-->
+	    
+		    <div id="UploadImageContainer">
+			    <span><img src="assets/icons/addProject_Img.svg"  class=" addProjectLogo" alt="modalLogo"></span>
+		            <label for ="addProjectInput" class="addProjectLabel">+ Ajouter une photo</label>
+		                <input type="file" name="addProjectInput"  id="addProjectInput" class ="hidden">
+					<!--Test	<input type="file" id="imageUpload">
+<div id="imagePreview"></div>-->
+	         </div>
+		        <span>jpg, png : 4mo max</span>
+	</div>
+			 <!--div previewImage end-->
+    <div id="projectInfo">
+		<label for="projectName">Titre</label>	
+		    <input type="text" name="projectName" id="projectName">
+           <!-- <span id="nameError" class="error-message"></span>-->
+	       <!---derouleur choix categories-->
+		       <label for="projectCategories">Catégorie</label>
+		          <select name="projectCategory" id="projectCategories">
+			<!--fetch API-->	
+		          </select>
+	</div>
+		<hr>
+		<!--cet input telecharge la photo -->
+		<input type="submit"  class="validateBtn" value="Valider">
+<!--/div-->
+		</form>
+	</article>
+  </div>
+  </div>
+</aside>
+		<!--methode à revoir <button id="add-project-btn" class="open-modal add-project-btn hidden" >
+            <i class="fa-regular fa-pen-to-square"></i>modifier </button>-->
 		<div class="filters">
 			<button id="0">Tous</button>
 		</div>
@@ -75,7 +145,7 @@
 		</form>
 	</section>
 </main>
-
+</div><!-- fin de main_container-->
 <footer>
 	<nav>
 		<ul>
@@ -83,73 +153,13 @@
 		</ul>
 	</nav>
 </footer>
-<!--SECTION MODALE-->
-<div id="modalSection" class="modal hidden">
-	<div class="modal_content">
-	  <button class="close_btn" id="close_modal">
-		<i class="fa-solid fa-xmark"></i>
-	  </button>
-	  <h3 class="gallery_projects">Galerie Photo</h3>
-	  <div id="existing_projects"></div>
-	  <button id="add_project">Ajouter une photo</button>
-	</div>
-	<div class="modal_content-form">
-	  <div class="back_and_close-form">
-		<button class="back_btn" id="back_form-modal">
-		  <i class="fa-solid fa-arrow-left"></i>
-		</button>
-		<button class="close_btn" id="close_modal-form">
-		  <i class="fa-solid fa-xmark"></i>
-		</button>
-	  </div>
-	  <h3>Ajout photo</h3>
-	  <form id="add_project-form">
-		<div class="custom_file-upload" id="project_upload-container">
-		  <i class="fa-regular fa-image" id="project_upload-icon"></i>
-		  <button id="project_upload-btn">+ Ajouter photo</button>
-		<!--  <label for="figure"></label>-->
-		  <input
-			type="file"
-			id="image"
-			name="image"
-			accept=".png, .jpg, .jpeg"
-			style="display: none"
-		  />
-		  <p id="file_info-text">jpg, png: 4 mo max</p>
-		  <img
-			id="uploaded_project"
-			src=""
-			alt="image chargée"
-			style="display: none"
-		  />
-		</div>
 
-		<label for="title">Titre</label>
-		<input type="text" id="title" name="title" />
 
-		<label for="project_category">Catégorie</label>
-		<select id="project_category" name="category">
-			<!--test-->
-		  <option selected label=" "></option>
-		  <option value="1">Objets</option>
-		  <option value="2">Appartements</option>
-		  <option value="3">Hotels & restaurants</option>
-		</select>
-		<div class="line">
-		  <div id="form_error-message" class="hidden">
-			Veuillez remplir tous les champs.
-		  </div>
-		  <div id="form_success-message" class="form-success hidden">
-			Travail ajouté avec succès !
-		  </div>
-		</div>
+<script src="./assets/script.js"></script>
+<script src="./assets/modal.js" ></script>
 
-		<button id="btn_valider" class="submit_project" type="submit">
-		  Valider
-		</button>
-	  </form>
-	</div>
-  </div>
-  <script src="./assets/modal.js"></script>
+
+
 </body>
+
 </html>

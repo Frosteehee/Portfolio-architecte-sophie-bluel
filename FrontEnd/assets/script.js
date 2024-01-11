@@ -60,6 +60,7 @@ async function displayProjects(){
 
 }
 displayProjects();
+
 /****************************** FILTRES ************************************/
 
 //Fonction pour afficher les boutons de filtre
@@ -70,10 +71,8 @@ async function getCategories(){
 }
 
 async function displayCategories(){
-  const projectsCategories = await getCategories();
-  console.log(projectsCategories);
-
-  projectsCategories.forEach((category) => {
+    const projectsCategories = await getCategories();
+    projectsCategories.forEach((category) => {
     const sectionFilters = document.querySelector(".filters");
     const filterProjects = document.createElement("button");
 
@@ -82,7 +81,6 @@ async function displayCategories(){
     filterProjects.id = category.id;
     sectionFilters.appendChild(filterProjects);
   });
-
 }
 displayCategories();
 
@@ -97,19 +95,15 @@ buttons.forEach(button => {//boucle pour parcourir les boutons
   button.addEventListener("click", (e) => {//ajout d'un event listener sur chaque bouton
   button = e.target.id;//recuperation de l'id du bouton cliqué
   sectionGallery.innerHTML = "";//vider la section gallery^
-  console.log(button);
 
-
-if (button !== "0") {//si l'id du bouton est différent de 0
+if (button !== "0") {//si l'id du bouton est différent de 0 ("tous")
 const galleryFiltered = projects.filter((project) => {//filtrer les projets par catégorie
   return project.categoryId == button;//retourner les projets dont l'id de la catégorie correspond à l'id du bouton cliqué
 
 }
 );
-console.log(galleryFiltered);
 
-
-//quand je fais un For Each cela me creer autant d img que de projets dans chaque categorie
+//quand je fais un For Each cela me creer autant d img/figure que de projets dans chaque categorie
 for (let i = 0; i < galleryFiltered.length; i++) {
   const figure = galleryFiltered[i];
   const sectionGallery = document.querySelector(".gallery");
@@ -126,6 +120,7 @@ for (let i = 0; i < galleryFiltered.length; i++) {
   projectFigure.appendChild(titleFigure);
 }
 }
+//si  je clique sur le bouton "tous les projets" cela me renvoie tous les projets
 else {
 displayProjects();
 
@@ -138,4 +133,49 @@ displayProjects();
 filterProjectsByCategory();
 
 
+
+function logOut() {//fonction pour se deconnecter
+  const logOutBtn = document.getElementById("logOut");//recupere le bouton
+
+
+  if (window.localStorage.getItem("token")) {//si le token est dans le local storage
+    logOutBtn.innerHTML = "logout";//changer le texte du bouton
+
+    logOutBtn.addEventListener("click", () => {//ajouter un event listener sur le bouton
+      logOutBtn.href = window.location.href;//rediriger vers la page d'accueil
+      window.localStorage.removeItem("token");//supprimer le token du local storage
+    });
+
+    //   localStorage.clear(); 
+
+  }
+}
+
+logOut();
+
+
+//cette fonction permet d'afficher la vue admin si l'utilisateur est connecté, en cachant adminView
+// et en supprimant les filtres de la page.
+function displayAdminView() {//fonction pour afficher la vue admin
+const adminView = document.querySelectorAll(".adminView");//recuperer la div admin view
+//si l utilisateur est connecté
+if (window.localStorage.getItem("token")) {//si le token est dans le local storage
+ //adminView.style.display = "flex";//display ne
+// const sectionFilters = displayCategories();
+//sectionFilters.remove();
+sectionFilters.style.display = "none";
+} 
+//si l utilisateur n est pas connecté
+if (!window.localStorage.getItem("token")){//si le token n est pas dans le local storage
+
+  adminView.forEach((adminView) => { //boucle pour parcourir la div admin view, pourquoi forEach? sans = adminView is not defined
+    adminView.style.display = "none";
+  });
+  }
+
+ 
+
+
+}
+displayAdminView();
 

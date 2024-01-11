@@ -2,7 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+* {
+	cursor: default;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -28,13 +30,26 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
+
+body{ 
+	width: 100%;
 	background-color:rgba(255, 254, 248, 1);
+
+}
+.main_container {
+	max-width: 1140px;
+	line-height: 1;
+	
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
 }
 ol, ul {
 	list-style: none;
+
 }
+
+
 blockquote, q {
 	quotes: none;
 }
@@ -48,12 +63,7 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
-body {
-	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
-	font-size: 14px;
-}
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -97,11 +107,25 @@ nav li {
 }
 
 li:hover {
-	color: #B1663C;
+	color: black;
+	font-weight: bold;
 }
+
+nav a {
+	text-decoration: none;
+	color: inherit;
+  }
+
+#logoIG{
+width: 22px;
+height: 22px;
+flex-shrink: 0;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
+	
 }
 #introduction figure {
 	flex: 1
@@ -113,14 +137,17 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
+	margin-bottom: 0.9em;
+	
+margin-right: 85px;
+	gap:10px;
 }
 #portfolio h2 {
 	text-align: center;
@@ -134,37 +161,20 @@ button {
 	background-color: rgba(255, 254, 248, 1);
 	border: 1px solid #1D6154;
 	margin : 10px; 
-padding-left: 15px;
-padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 	height: 40px;
 	text-align: center;
 	border-radius: 60px ;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
 }
 
 button:hover {
 	color: white;
 	background-color: #1D6154;
 }
-
-/*
-.filterAllWorks{
-	left:20%;
-	
-}
-
-.filterObjects{
-	left:35%;
-}
-
-.filterHotelsRestaurants{
-	left:45%;
-	width: 15%;
-}
-
-.filterAppartements{
-	left:60%;
-}
-*/
 
 .filters {
 	display: flex;
@@ -174,22 +184,36 @@ button:hover {
 	height: 50px;
 }
 
+#portfolio {
+
+	width: 88%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	margin-left:50px;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+
 }
 
 .gallery img {
 	width: 100%;
-
 }
+
 #contact {
 	width: 50%;
-margin: auto;
+    margin: auto;
 }
+
 #contact > * {
 	text-align: center;
 
@@ -229,50 +253,23 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+footer{
+	width: 100%;
+    height: 60px;
+    background-color:white;
+}
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
 
-.modalContainer{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-
+footer nav li {
+	padding: 0 10px;
+	font-size: 14px;
 }
-
-
-/* Barre d'édition admin */
-.adminBar {
-	box-sizing: border-box;
-	/* position: fixed; */
-	position: sticky;
-	top: 0;
-	background-color: #000000;
-	color: white;
-	padding: 10px;
-	width: 100vw;
-	height: 50px;
-	z-index: 9999;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	column-gap: 25px;
-  }
   
-  #edit_mode-btn {
-	background: transparent;
-	color: white;
-	border: none;
-	font-size: 16px;
-	column-gap: 10px;
-	display: flex;
-	cursor: pointer;
-  }
-  
-/******* JAVASCRIPT PROJETS *********/
+/******* JAVASCRIPT PROJETS *********
 .projets-section {
 	width: 100%;
 	margin: 50px 0 80px 0;
@@ -316,284 +313,376 @@ footer nav ul {
 	object-fit: cover;
   }
 
-  
-/********** modale **********/
-.modal {
-	position: fixed;
+  */
+/************************* User Loged ********************/
+
+
+/* Barre d'édition admin */
+nav {
+	align-items: stretch;
+}
+#adminBar {
+	box-sizing: border-box;
+	/* position: fixed; */
+	position: sticky;
 	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.312);
+	background-color: #000000;
+	color: white;
+	padding: 10px;
+
+	height: 50px;
 	z-index: 9999;
-  }
-  
-  .modal_content {
-	background-color: #fff;
-	padding: 20px 0px 30px 0px;
-	margin: 70px auto 0 auto;
-	height: 80vh;
-	width: 40%;
-	border-radius: 10px;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	overflow-y: auto;
-  }
-  
-  .modal_content h3 {
-	color: #000;
-	margin-top: 10px;
-	font-size: 1.625rem;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-  }
-  
-  .modal_content button {
-	border: none;
-	background: transparent;
-	font-size: 1.5rem;
-	align-self: flex-end;
-  }
-  
-  .fa-xmark {
-	margin-right: 30px;
-  }
-  
-  #existing_projects {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-column-gap: 10px;
-	grid-row-gap: 25px;
-	margin-top: 40px;
-	padding-bottom: 60px;
-	width: 70%;
-	border-bottom: #b3b3b3 solid 1px;
-  }
-  
-  #add_project {
-	font-family: "Syne";
-	font-weight: 700;
-	font-size: 0.8rem;
-	color: white;
-	background-color: #1d6154;
-	margin: 30px auto;
-	padding: 10px 50px;
-	width: 240px;
-	text-align: center;
-	border-radius: 60px;
-  }
-  
-  .img_container {
-	position: relative;
-	width: 100%;
-	aspect-ratio: 3/4;
-  }
-  
-  .img_container img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-  }
-  
-  .delete_icon {
-	position: absolute;
-	top: -6px;
-	right: -2px;
-	cursor: pointer;
-  }
-  
-  .delete_icon i {
-	font-size: 0.7rem;
-	color: white;
-	padding: 0.12rem;
-	background-color: black;
-	border: 1px solid black;
-	border-radius: 3px;
-  }
-  
-  .modal_content-form {
-	margin: 70px auto 0 auto;
-	background-color: #fff;
-	padding: 20px 0px 30px 0px;
-	height: 80vh;
-	width: 40%;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	overflow-y: auto;
-  }
-  
-  .modal_content-form > * {
-	text-align: center;
-  }
-  .modal_content-form h3 {
-	color: #000;
-	width: 50%;
-	font-size: 1.625rem;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-  }
-  
-  .modal_content-form form {
-	text-align: left;
-	margin-top: 30px;
-	display: flex;
-	flex-direction: column;
-  
-	width: 65%;
-  }
-  
-  image-upload {
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  }
-  .modal_content-form input {
-	height: 50px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  }
-  
-  .modal_content-form text {
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  }
-  
-  .submit_project {
-	font-family: "Syne";
-	font-weight: 700;
-	color: white;
-	background-color: #a7a7a7;
-	margin: 0 auto 0 auto;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px;
-	border: none;
-	padding: 10px;
-  }
-  
-  .submit_project-complete {
-	font-family: "Syne";
-	font-weight: 700;
-	color: white;
-	background-color: #1d6154;
-	margin: 0 auto 0 auto;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px;
-	border: none;
-	padding: 10px;
-  }
-  
-  .back_and_close-form {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-  }
-  
-  #back_form-modal {
-	color: black;
-	background-color: transparent;
-	border: none;
-	font-size: 1.2rem;
-	margin-left: 25px;
-	width: 2rem;
-  }
-  #close_modal-form {
-	color: black;
-	background-color: transparent;
-	border: none;
-	font-size: 1.2rem;
-	margin-right: 30px;
-	width: 2rem;
-  }
-  
-  #project_upload-container {
-	height: 170px;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-	background-color: #e8f1f6;
-	margin-bottom: 20px;
+	align-items: stretch;
+	column-gap: 25px;
+	/*displau: none;*/
+
   }
   
-  #project_upload-icon {
-	font-size: 4.5rem;
-	color: #b9c5cc;
-  }
-  
-  #project_upload-btn {
-	background-color: #b9c5cc;
-	color: #306685;
+  #edit_mode-btn {
+	background: transparent;
+	color: white;
 	border: none;
-	border-radius: 60px;
-	font-size: 0.875rem;
-	font-weight: 500;
-	padding: 10px 30px;
-	margin: 10px 0;
-  }
-  
-  #uploaded_project {
-	height: 100%;
-	object-fit: cover;
+	font-size: 16px;
+	column-gap: 10px;
+	display: flex;
 	cursor: pointer;
   }
-  #project_title {
-	margin-bottom: 20px;
-	margin-top: 10px;
-  }
-  #project_category {
-	height: 50px;
-	margin-top: 10px;
-  }
-  #title {
-	margin-bottom: 10px;
-	margin-top: 10px;
-  }
-  
-  select {
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  }
-  
-  .line {
-	border: solid 1px #b3b3b3;
-	margin: 40px 0;
-	position: relative;
-  }
-  #form_error-message {
-	color: red;
-	text-align: center;
-	width: 100%;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	position: absolute;
-	top: 25px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-  }
-  
-  .form_success {
-	color: green;
-	text-align: center;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	position: absolute;
-	top: 25px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-  }
- 
+
+
+/************************* modale ********************/
+
 .hidden {
 	display: none;
   }
   
   .hide {
 	display: none;
+}
+/*
+#modalSection{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+position: absolute;
+width: 60%;
+background-color: #1D6154;
+
+
+	
+}*/
+
+#modal_open {
+border:none;
+margin-left:40px;
+cursor: pointer;
+}
+
+.adminBtn{
+margin-left:170px;
+display: flex;
+margin-bottom:40px ;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position:fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 150px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	color:red;
+	
+  }
+/*
+  .modal_content{
+	
+	  background-color: red;
+	  margin: auto;
+	  padding: 20px;
+	  border: 1px solid #888;
+color:blue;
+	  position: fixed;
+  } */
+  .modalTxt{
+	font-family: Work Sans;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin:50px 0px;
+    color: #000000;
+  }
+
+.galleryModal {
+    width: 80%;
+	left: 10%;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;;
+    grid-row-gap: 20px;
+    position: relative;
+    height: 50%;
+    justify-items: center;
+	margin:0;
+	padding: 0;
+	/*background-color: grey;*/
+	
+  }
+  
+ .projectFigureModal {
+   margin:0;
+   padding:0;
+   align-items: center;
+   width: 80%;
+ 
+
+}
+ 
+  
+
+.imgFigureModal {
+width: 100%;
+}
+
+
+.deleteIcon{
+	width: 15px;
+	position: absolute;
+	height: 15px;
+	background-color: #000;
+	margin-left:12%;
+	margin-top:5px;
+}
+
+  /* Modal Content */
+  .modal_content {
+	border-radius: 10px;
+/*background: #FFF;*/
+	margin: auto;
+	padding: 30px;
+	border: 1px solid #888;
+	width: 38%;
+background-attachment:local;
+overflow:auto;
+
+	/*:inherit;*/
+	background-color: rgba(255, 255, 255, 1);
+  }
+
+  
+  /* The Close Button */
+  .closeBtn {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+  }
+  
+  .closeBtn:hover,
+  .closeBtn:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+
+hr{
+  color: #B3B3B3;
+  width: 80%;
+  height: 0px;
+  border: 1px solid #B3B3B3;
+  position: relative;
+
+}
+
+#addProjectBtn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border: none;
+	border-radius: 35px;
+	background-color:#1D6154;
+	width: 237px;
+	height: 36px;
+	flex-shrink: 0;
+	color: white;
+	font-family: syne;
+
+}
+
+.addProjectModal{
+	display: flex;
+	flex-direction: column;
+position:relative;
+margin:0;
+padding: 0;
+	width: 100%;
+	top:30%;
+
+}
+.modal1{
+	display: flex;
+	flex-direction: column;
+	
+	
+}
+/************************Modal2*********************/
+.modal2{
+	display: flex;
+	flex-direction: column;
+}
+
+.modal2 hr{
+	margin-top: 10%;
+}
+
+input[type="text"]{
+	width: 100%;
+	height: 40px;
+	
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#projectCategories{
+	width: 100%;
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.addProjectLogo{
+
+	width: 100%;
+	
+	flex-shrink: 0;
+	color: white;
+/*background-color: blue;*/
+}
+
+.addProjectLabel{
+
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border: none;
+	border-radius: 35px;
+	background-color:#1D6154;
+	width: 237px;
+	height: 36px;
+	flex-shrink: 0;
+	color:black;
+	font-family: syne;
+	margin-bottom: 40px;
+	flex-shrink: 0;
+background-color: grey;
+}
+
+#UploadImageContainer
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+
+	/*background-color: aquamarine;*/
+}
+
+#projectInfo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 70%;
+	height: 20%;
+	border: none;
+	margin: auto;
+	/*margin-top:5%;
+	*/
+}
+
+#projectInfo label{
+margin:10px;
+
+}
+
+.validateBtn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border: none;
+	border-radius: 35px;
+	background-color:#1D6154;
+	width: 237px;
+	height: 36px;
+	flex-shrink: 0;
+	color: white;
+	font-family: syne;
+	margin-top: 20px;
+}
+
+#formUpload{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	
+	
+}
+
+#previewImageContainer{
+	width: 420px;
+	height: 169px;
+	top: 786px;
+	left: 510px;
+	border-radius: 3px;
+	
+	/*width: 80%;
+	/*height: 80%;*/
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	background-color:rgba(232, 241, 246, 1);
+	/*margin-left: 30%;	
+*/
+
+}
+
+.previewImage{
+
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	object-fit: contain;
+}
+
+#arrowBack{
+	border: none;
+}
+
+#arrowBack:hover{
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 1);
 }
