@@ -1,23 +1,6 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-* {
-	cursor: default;
-}
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain) */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -26,35 +9,27 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-
-body{ 
+body{
 	width: 100%;
 	background-color:rgba(255, 254, 248, 1);
-
 }
 .main_container {
 	max-width: 1140px;
 	line-height: 1;
-	
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
 ol, ul {
 	list-style: none;
-
 }
-
-
 blockquote, q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before, blockquote:after, q:before, q:after {
 	content: '';
 	content: none;
 }
@@ -63,119 +38,107 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
-
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0 
 }
 section {
-	margin: 50px 0
+	margin: 50px 0 
 }
-
 h1{
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C 
 }
-
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
+	;
 }
-
 h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154 
 }
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
+.logOut {
+	color: black;
+}
 li:hover {
 	color: black;
 	font-weight: bold;
 }
-
 nav a {
 	text-decoration: none;
 	color: inherit;
-  }
-
-#logoIG{
-width: 22px;
-height: 22px;
-flex-shrink: 0;
 }
-
+#logoIG{
+	width: 22px;
+	height: 22px;
+	flex-shrink: 0;
+}
 #introduction {
 	display: flex;
 	align-items: center;
-	
 }
 #introduction figure {
-	flex: 1
+	flex: 1 
 }
 #introduction img {
 	display: block;
 	margin: auto;
 	width: 80%;
 }
-
 #introduction article {
 	flex: 1;
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
 #introduction p {
 	margin-bottom: 0.9em;
-	
-margin-right: 85px;
+	margin-right: 85px;
 	gap:10px;
 }
-#portfolio h2 {
+#portfolio h2{
 	text-align: center;
-	margin-bottom: 1em;
+	
 }
-/*filtres*/
+/***********filtres*************/
 button {
 	font-family: 'Syne';
 	font-weight: 700;
 	color:#1D6154 ;
 	background-color: rgba(255, 254, 248, 1);
 	border: 1px solid #1D6154;
-	margin : 10px; 
-    padding-left: 15px;
-    padding-right: 15px;
+	margin : 10px;
+	padding-left: 15px;
+	padding-right: 15px;
 	height: 40px;
 	text-align: center;
 	border-radius: 60px ;
-    font-size: 16px;
-    font-style: normal;
-    line-height: normal;
+	font-size: 16px;
+	font-style: normal;
+	line-height: normal;
 }
-
 button:hover {
 	color: white;
 	background-color: #1D6154;
 }
-
 .filters {
 	display: flex;
 	justify-content: center;
@@ -183,16 +146,14 @@ button:hover {
 	width: 100%;
 	height: 50px;
 }
-
 #portfolio {
-
 	width: 88%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
 	margin-left:50px;
 }
 
@@ -202,21 +163,16 @@ button:hover {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-
 }
-
 .gallery img {
 	width: 100%;
 }
-
 #contact {
 	width: 50%;
-    margin: auto;
+	margin: auto;
 }
-
 #contact > * {
 	text-align: center;
-
 }
 #contact h2{
 	margin-bottom: 20px;
@@ -227,7 +183,6 @@ button:hover {
 	display: flex;
 	flex-direction: column;
 }
-
 #contact input {
 	height: 50px;
 	font-size: 1.2em;
@@ -243,6 +198,20 @@ button:hover {
 }
 
 input[type="submit"]{
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	border: none;
+	border-radius: 60px;
+	height: 36px;
+	flex-shrink: 0;
+	font-family: syne;
+	margin-top: 20px;
+	margin : 2em auto ;
+	text-align: center;
+}
+#formContact{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -252,95 +221,47 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
-
 footer{
 	width: 100%;
-    height: 60px;
-    background-color:white;
+	height: 60px;
+	background-color:white;
 }
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em 
 }
-
 footer nav li {
 	padding: 0 10px;
 	font-size: 14px;
+	font-family: Work Sans;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
 }
-  
-/******* JAVASCRIPT PROJETS *********
-.projets-section {
-	width: 100%;
-	margin: 50px 0 80px 0;
-  }
-  
-  .projets-section h2 {
-	text-align: center;
-	margin-bottom: 1rem;
-	margin-top: 8rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	column-gap: 20px;
-  }
-  
-  .add-project-btn {
-	display: inline-block;
-	background: transparent;
-	border: none;
-	display: flex;
-	column-gap: 10px;
-	margin-top: 5px;
-	cursor: pointer;
-  }
-  
-  .projets {
-	margin-top: 60px;
-	width: 95%;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-  }
-  
-  .projets figure {
-	aspect-ratio: 3/4;
-  }
-  .projets img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-  }
 
-  */
 /************************* User Loged ********************/
-
-
 /* Barre d'édition admin */
 nav {
 	align-items: stretch;
 }
 #adminBar {
 	box-sizing: border-box;
-	/* position: fixed; */
 	position: sticky;
 	top: 0;
 	background-color: #000000;
 	color: white;
 	padding: 10px;
-
 	height: 50px;
 	z-index: 9999;
 	display: flex;
 	justify-content: center;
 	align-items: stretch;
 	column-gap: 25px;
-	/*displau: none;*/
-
-  }
-  
-  #edit_mode-btn {
+}
+#edit_mode-btn {
 	background: transparent;
 	color: white;
 	border: none;
@@ -348,112 +269,74 @@ nav {
 	column-gap: 10px;
 	display: flex;
 	cursor: pointer;
-  }
-
-
-/************************* modale ********************/
-
-.hidden {
-	display: none;
-  }
-  
-  .hide {
-	display: none;
 }
-/*
-#modalSection{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-position: absolute;
-width: 60%;
-background-color: #1D6154;
-
-
-	
-}*/
 
 #modal_open {
-border:none;
-margin-left:40px;
-cursor: pointer;
+	border:none;
+	cursor: pointer;
+    margin-left:300px;
+    margin-top:-20px;
+   padding-bottom: 90px;
+}
+/************************* modale ********************/
+.hidden {
+	display: none;
+}
+.hide {
+	display: none;
 }
 
-.adminBtn{
-margin-left:170px;
-display: flex;
-margin-bottom:40px ;
-}
 
 /* The Modal (background) */
 .modal {
-	display: none; /* Hidden by default */
-	position:fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 150px; /* Location of the box */
+	display: none;
+	position:fixed;
+	z-index: 1;
+	padding-top: 150px;
 	left: 0;
 	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-	color:red;
-	
-  }
-/*
-  .modal_content{
-	
-	  background-color: red;
-	  margin: auto;
-	  padding: 20px;
-	  border: 1px solid #888;
-color:blue;
-	  position: fixed;
-  } */
-  .modalTxt{
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+   /* Enable scroll if needed */
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+}
+.modalTxt{
 	font-family: Work Sans;
-    font-size: 26px;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: center;
-    margin:50px 0px;
-    color: #000000;
-  }
-
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 30px;
+	letter-spacing: 0em;
+	text-align: center;
+	margin:50px 0px;
+	color: #000000;
+}
 .galleryModal {
-    width: 80%;
+	width: 80%;
 	left: 10%;
-    display: grid;
-    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;;
-    grid-row-gap: 20px;
-    position: relative;
-    height: 50%;
-    justify-items: center;
+	display: grid;
+	grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+   ;
+	grid-row-gap: 20px;
+	position: relative;
+	height: 50%;
+	justify-items: center;
 	margin:0;
 	padding: 0;
-	/*background-color: grey;*/
-	
-  }
-  
- .projectFigureModal {
-   margin:0;
-   padding:0;
-   align-items: center;
-   width: 80%;
- 
-
 }
- 
-  
-
+/*Les Projets dans la modal1 -Img titre et categorie*/
+.projectFigureModal {
+	margin:0;
+	padding:0;
+	align-items: center;
+	width: 80%;
+}
+/*Les Img dans la modal1*/
 .imgFigureModal {
-width: 100%;
+	width: 100%;
 }
-
-
 .deleteIcon{
 	width: 15px;
 	position: absolute;
@@ -462,79 +345,59 @@ width: 100%;
 	margin-left:12%;
 	margin-top:5px;
 }
-
-  /* Modal Content */
-  .modal_content {
+/* Modal Content */
+.modal_content {
 	border-radius: 10px;
-/*background: #FFF;*/
 	margin: auto;
 	padding: 30px;
 	border: 1px solid #888;
 	width: 38%;
-background-attachment:local;
-overflow:auto;
-
-	/*:inherit;*/
+	background-attachment:local;
+	overflow:auto;
 	background-color: rgba(255, 255, 255, 1);
-  }
-
-  
-  /* The Close Button */
-  .closeBtn {
+}
+/* The Close Button */
+.closeBtn {
 	color: #aaaaaa;
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
-  }
-  
-  .closeBtn:hover,
-  .closeBtn:focus {
+}
+.closeBtn:hover, .closeBtn:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
-  }
-
-
-hr{
-  color: #B3B3B3;
-  width: 80%;
-  height: 0px;
-  border: 1px solid #B3B3B3;
-  position: relative;
-
 }
+/* la ligne grise */
+hr{
+	color: #B3B3B3;
+	width: 80%;
+	height: 0px;
+	border: 1px solid #B3B3B3;
+	position: relative;
+}
+/* Btn "Ajouter une image" modal1*/
 
 #addProjectBtn{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	border: none;
-	border-radius: 35px;
 	background-color:#1D6154;
 	width: 237px;
 	height: 36px;
-	flex-shrink: 0;
 	color: white;
-	font-family: syne;
-
+	border-radius: 60px ;
 }
-
+/*modal2*/
 .addProjectModal{
 	display: flex;
 	flex-direction: column;
-position:relative;
-margin:0;
-padding: 0;
+	position:relative;
+	margin:0;
+	padding: 0;
 	width: 100%;
 	top:30%;
-
 }
 .modal1{
 	display: flex;
 	flex-direction: column;
-	
-	
 }
 /************************Modal2*********************/
 .modal2{
@@ -542,19 +405,26 @@ padding: 0;
 	flex-direction: column;
 }
 
+.modal2 h2{
+	font-family: Work Sans;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 30px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: #000000;
+}
+
 .modal2 hr{
 	margin-top: 10%;
 }
-
 input[type="text"]{
 	width: 100%;
 	height: 40px;
-	
 	border: none;
 	border-radius: 5px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 #projectCategories{
 	width: 100%;
 	height: 30px;
@@ -562,18 +432,12 @@ input[type="text"]{
 	border-radius: 5px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 .addProjectLogo{
-
 	width: 100%;
-	
 	flex-shrink: 0;
 	color: white;
-/*background-color: blue;*/
 }
-
 .addProjectLabel{
-
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -581,7 +445,6 @@ input[type="text"]{
 	position: relative;
 	border: none;
 	border-radius: 35px;
-	background-color:#1D6154;
 	width: 237px;
 	height: 36px;
 	flex-shrink: 0;
@@ -589,20 +452,15 @@ input[type="text"]{
 	font-family: syne;
 	margin-bottom: 40px;
 	flex-shrink: 0;
-background-color: grey;
+	background: #CBD6DC;
 }
-
-#UploadImageContainer
-{
+#UploadImageContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-
-	/*background-color: aquamarine;*/
 }
-
 #projectInfo{
 	display: flex;
 	flex-direction: column;
@@ -612,31 +470,35 @@ background-color: grey;
 	height: 20%;
 	border: none;
 	margin: auto;
-	/*margin-top:5%;
-	*/
 }
-
 #projectInfo label{
-margin:10px;
-
+	margin:10px;
+	left:0;
+	width: 100%;
 }
-
+#nameError{
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;;
+    margin-bottom: 20px;;
+}
 .validateBtn{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	border: none;
-	border-radius: 35px;
+	border-radius: 60px;
 	background-color:#1D6154;
 	width: 237px;
 	height: 36px;
-	flex-shrink: 0;
 	color: white;
-	font-family: syne;
 	margin-top: 20px;
 }
-
+ .button__off{
+	background-color: #A7A7A7;
+	border: none;
+	border-radius: 60px;
+	width: 237px;
+	height: 36px;
+	color: white;
+	margin-top: 20px;
+}
 #formUpload{
 	display: flex;
 	flex-direction: column;
@@ -644,32 +506,21 @@ margin:10px;
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	
-	
 }
-
 #previewImageContainer{
-	width: 420px;
+	width: 100%;
 	height: 169px;
 	top: 786px;
 	left: 510px;
 	border-radius: 3px;
-	
-	/*width: 80%;
-	/*height: 80%;*/
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	background-color:rgba(232, 241, 246, 1);
-	/*margin-left: 30%;	
-*/
-
 }
-
 .previewImage{
-
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -677,12 +528,19 @@ margin:10px;
 	align-items: center;
 	object-fit: contain;
 }
-
 #arrowBack{
 	border: none;
+	background-color: transparent;
 }
-
-#arrowBack:hover{
+.fa-arrow-left{
+	width: 21px;
+    height: 21px;
+    top: 686px;
+    left: 435px;
+    padding: 1px 0px 1.99px 0px;
+    color:#000000;
+    margin-right:90%;
+}
+#arroBack:hover{
 	cursor: pointer;
-	background-color: rgba(255, 255, 255, 1);
 }
