@@ -18,8 +18,8 @@ let index = 0;
 function main(){
   getGalleryProjects();
   displayProjects();
- displayCategories();
- filterProjectsByCategory();
+  displayCategories();
+  filterProjectsByCategory();
   logOut();
   displayAdminView();
 }
@@ -157,14 +157,10 @@ function displayAdminView() {//fonction pour afficher la vue admin
 const adminView = document.querySelectorAll(".adminView");//recuperer la div admin view
 //si l utilisateur est connecté
 if (window.localStorage.getItem("token")) {//si le token est dans le local storage
- //adminView.style.display = "flex";//display ne
-// const sectionFilters = displayCategories();
-//sectionFilters.remove();
 sectionFilters.style.display = "none";
 } 
 //si l utilisateur n est pas connecté
 if (!window.localStorage.getItem("token")){//si le token n est pas dans le local storage
-
   adminView.forEach((adminView) => { //boucle pour parcourir la div admin view, pourquoi forEach? sans = adminView is not defined
     adminView.style.display = "none";
   });
