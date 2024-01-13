@@ -10,8 +10,6 @@ const sectionFilters = document.querySelector(".filters");
 const projects =  getGalleryProjects();
 const filterProjects = document.createElement("button");
 const projectsCategories = getCategories();
-//const buttons = document.querySelectorAll(".filters button");
-
 
 let index = 0;
 
@@ -22,6 +20,8 @@ function main(){
   displayProjects();
  displayCategories();
  filterProjectsByCategory();
+  logOut();
+  displayAdminView();
 }
 
 
@@ -84,6 +84,7 @@ async function displayCategories(){
 }
 displayCategories();
 
+
 //Fonction pour filtrer les projets par catégorie
 
 
@@ -126,7 +127,6 @@ displayProjects();
 
 }
   });
-
   }
   )}
 
@@ -145,9 +145,6 @@ function logOut() {//fonction pour se deconnecter
       logOutBtn.href = window.location.href;//rediriger vers la page d'accueil
       window.localStorage.removeItem("token");//supprimer le token du local storage
     });
-
-    //   localStorage.clear(); 
-
   }
 }
 
@@ -172,10 +169,5 @@ if (!window.localStorage.getItem("token")){//si le token n est pas dans le local
     adminView.style.display = "none";
   });
   }
-
- 
-
-
 }
 displayAdminView();
-
