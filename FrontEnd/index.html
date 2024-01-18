@@ -46,10 +46,8 @@
                </article>
             </section>
             <section id="portfolio">
-              <!--<div class="adminBtn">-->
                   <h2>Mes Projets</h2>
                   <span id="modal_open" class="adminView"><i class="fa-regular fa-pen-to-square "></i> modifier </span>
-               <!--</div>-->
 
                <!--******************SECTION MODALE********************-->
                <!-- ouvrir modale -->
@@ -60,15 +58,16 @@
                      <div class="modal_content ">
                         <span class="closeBtn">&times;</span>
 
-                        <!--la modal1 -->	
-                        <article class="modal1">
-                           <h2 class="modalTxt">Galerie Photo</h2>
-                           <!--galeriephoto-->
-                           <div class="galleryModal"></div>
-                           <!--ligne grise-->
-                           <hr>
-                           <input id = "addProjectBtn" type="submit" value="Ajouter une photo">
-                        </article>
+            <!--la modal1 -->	
+            <article class="modal1">
+               <h2 class="modalTxt">Galerie Photo</h2>
+            <!--galeriephoto-->
+               <div class="galleryModal"></div>
+            <!--ligne grise-->
+               <hr>
+               <input id = "addProjectBtn" type="submit" value="Ajouter une photo">
+            </article>
+
 
                         <!--la modal2-->
                         <article class="modal2">
@@ -79,33 +78,34 @@
 							<!--preview Img container-->
                               <div id="previewImageContainer">
                                  <div id="UploadImageContainer">
-                                    <span><img src="assets/icons/addProject_Img.svg"  class=" addProjectLogo" alt="modalLogo"></span>
+                                    <span><img src="assets/icons/addProject_Img.svg"  class="addProjectLogo" alt="modalLogo"></span>
                                     <label for="addProjectInput" class="addProjectLabel">+ Ajouter une photo</label>
                                     <input type="file" name="addProjectInput" id="addProjectInput" class="hidden">
+                                    <span>jpg, png : 4mo max</span>
                                  </div>
-                                 <span>jpg, png : 4mo max</span>
+                              
                               </div>
 							  <!--input titre et categorie projet-->
                               <div id="projectInfo">
                                  <label for="projectName">Titre</label>	
                                  <input type="text" name="projectName" id="projectName">
                                   <span id="nameError" class="error-message"></span>
-                                 <!---derouleur choix categories-->
+                        <!---derouleur choix categories-->
                                  <label for="projectCategories">Catégorie</label>
-                                 <select name="projectCategory" id="projectCategories">
-                                    <!--fetch API-->	
-                                 </select>
+                                 <select name="projectCategory" id="projectCategories"></select>
+                                 <span id="categoriesError" class="error-message"></span>
                               </div>
                               <hr>
                               <!--cet input telecharge la photo -->
                               <input type="submit" id="validateBtn"  class="button__off" value="Valider">
                            </form>
                         </article>
+
                      </div>
                   </div>
                </aside>
-
 			   <!--******************FIN SECTION MODALE********************-->
+
                <div class="filters">
                   <button id="0">Tous</button>
 				  <!--fetch API-->
