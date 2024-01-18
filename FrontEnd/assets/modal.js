@@ -176,12 +176,16 @@ const arrowBack = document.getElementById('arrowBack')                       //
 function switchModal2() {
     const modal1 = document.querySelector('.modal1')
     const modal2 = document.querySelector('.modal2')
+  
    
 
     if (modal2.style.display === 'flex') {
         modal2.style.display = 'none'
         modal1.style.display = 'flex'
-          formUpload.reset();
+        nameError.innerHTML = "";
+        categoriesError.innerHTML = "";
+        formUpload.reset();
+    
 
     } else {
         modal2.style.display = 'flex'
@@ -257,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.append("category", projectCategory);
     
       if (!projectName) { // Vérifie si un nom de projet est renseigné
-        alert("Veuillez ajouter un titre");
+       // alert("Veuillez ajouter un titre");
         nameError.innerHTML = "Veuillez ajouter un titre";
         return;
       }
@@ -268,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
      if (!projectCategory) { // Vérifie si une catégorie est sélectionnée
-        alert("Veuillez ajouter une catégorie");
+     //   alert("Veuillez ajouter une catégorie");
         categoriesError.innerHTML = "Veuillez ajouter une catégorie";
        return;
       }
@@ -312,7 +316,7 @@ const formUpload = document.querySelector('.form_upload');
 const projectName = document.getElementById("projectName")
 const projectCategory = document.getElementById("projectCategories")
 
-validateBtn.disabled = true;//bouton desactive par defaut
+//validateBtn.disabled = true;//bouton desactive par defaut
 
 // Fonction pour vérifier si tous les champs sont remplis
 function checkInputs() {
@@ -325,7 +329,7 @@ function checkInputs() {
 
   } else {
     // Sinon,valideBtn est désactivé
-    validateBtn.disabled = true;
+   // validateBtn.disabled = true;
     validateBtn.classList.remove('validateBtn');
     validateBtn.classList.add('button__off');
   }
