@@ -309,6 +309,8 @@ nav {
 	background-color: rgb(0,0,0);
 	background-color: rgba(0,0,0,0.4);
 }
+
+
 .modalTxt{
 	font-family: Work Sans;
 	font-size: 26px;
@@ -358,9 +360,12 @@ nav {
 	margin: auto;
 	padding: 30px;
 	border: 1px solid #888;
-	width: 38%;
+	width: 630px;
+height: 670px;
+
+
+
 	background-attachment:local;
-	overflow:auto;
 	background-color: rgba(255, 255, 255, 1);
 }
 /* The Close Button */
