@@ -4,7 +4,7 @@
 
 
 //Variables globales
-const token = window.localStorage.getItem("token");
+const token = window.localStorage.getItem("token").replace(/['"]+/g, '');
 const modal = document.querySelector(".modal "); 
 const modal1 = document.querySelector(".modal1"); 
 const modal2 = document.querySelector(".modal2"); 
@@ -22,7 +22,6 @@ const addProjectLogo = document.querySelector('addProjectLogo');
 const addProjectLabel = document.querySelector('addProjectLabel');
 
 
-
 function main(){
   getGalleryProjects();
   displayProjectsModal();
@@ -33,22 +32,7 @@ function main(){
   getCategories();
   uploadProject();
   checkInputs();
-  displayPreviewContainer();
 }
-
-//fonction pour afficher le html dans preview container une fois hors de la modal
-
-function displayPreviewContainer(){
-  previewContainer.innerHTML =  ` 
-  <span><img src="assets/icons/addProject_Img.svg" class="addProjectLogo" alt="modalLogo"></span>
-  <label for="addProjectInput" class="addProjectLabel">+ Ajouter une photo</label>
-  <input type="file" name="addProjectInput" id="addProjectInput" class="hidden">
-  <span>jpg, png : 4mo max</span>
-  `;
-}
-
-
-
 
 
 /////////////////////// OUVRIR ET FERMER LA MODALE /////////////////////////////
@@ -62,17 +46,16 @@ modal2.style.display = "none";
 // au clic sur la croix, la modale se ferme
 closeBtn.onclick = function() {
 modal.style.display = "none";
-displayPreviewContainer();
+
 }
 
 // au clic en dehors de la modale, la modale se ferme
 window.onclick = function(event) { 
   if (event.target == modal) {
    modal.style.display = "none";
-   displayPreviewContainer();
+ 
   }
 }
-
 
 
 
@@ -85,9 +68,7 @@ return await response.json();
 getGalleryProjects();
 
 
-
 //////////////// AFFICHER LES PROJETS DANS LA MODALE ///////////////////////////
-
 
 async function displayProjectsModal(){
 
@@ -141,11 +122,10 @@ async function displayProjectsModal(){
 
 displayProjectsModal();
 
-
 ////////////////// SUPPRIMER UN PROJET DEPUIS L'API //////////////////////
 
 deleteFigureFromAPI = async (id) => {
-
+const deleteSuccess = document.getElementById('deleteSuccess');
   const token = window.localStorage.getItem("token")//.replace(/['"]+/g, '');
   const response = await fetch(`http://localhost:5678/api/works/${id}`, {
       method: "DELETE",
@@ -158,17 +138,17 @@ deleteFigureFromAPI = async (id) => {
 
   if (!response.ok) {
     throw new Error('Request failed');
-
-  } else {
+  }
+  else {
     console.log('Photo supprimée avec succès');
+    deleteSuccess.innerHTML = "Photo supprimée avec succès";
     sectionGallery.innerHTML = "";
     await displayProjects();
+
   }
 }
 
-
 /////////////////////// AJOUTER UN PROJET ///////////////////////////////////////
-
 
 //Si je clique sur le bouton "ajouter un projet", la modal2 s'affiche et la modal1 disparait
 const addProjectBtn = document.getElementById('addProjectBtn') //
@@ -187,9 +167,7 @@ function switchModal() {
 
 switchModal();
 
-
 //fleche retour pour revenir à la modal1
-
 
 const arrowBack = document.getElementById('arrowBack')                       
 
@@ -203,16 +181,13 @@ function switchModal2() {
         modal1.style.display = 'flex'
            nameError.innerHTML = "";
            categoriesError.innerHTML = "";
+           deleteSuccess.innerHTML = "";
         formUpload.reset();
-        displayPreviewContainer();
-
-
     } else {
         modal2.style.display = 'flex'
         modal1.style.display = 'none'
 }
 }
-
 
 //recuperer les categories depuis l'API pour le menu deroulant
  
@@ -240,7 +215,6 @@ categories.then((data) => {
 });
 
 
-
 //////////upload et preview de l'image
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -253,17 +227,25 @@ document.addEventListener("DOMContentLoaded", function () {
     if (selectedFile) {
       const reader = new FileReader();
       reader.addEventListener('load', function () {
-        const img = document.createElement('img');
-        img.src = this.result;
+        const imgPreview = document.createElement('img');
+        imgPreview.src = this.result;
         previewContainer.innerHTML = '';
-        previewContainer.appendChild(img);
-        img.classList.add("previewImage");
+        previewContainer.appendChild(imgPreview);
+        imgPreview.classList.add("previewImage");
       });
       reader.readAsDataURL(selectedFile);
-      displayPreviewContainer.remove;
+      
     }
   });
+  
+  function displayPreviewContainer() {
+    previewContainer.innerHTML =  `     <span><img src="assets/icons/addProject_Img.svg"  class="addProjectLogo" alt="modalLogo"></span>
+    <label for="addProjectInput" class="addProjectLabel">+ Ajouter une photo</label>
+    <input type="file" name="addProjectInput" id="addProjectInput" class="hidden">
+    <span>jpg, png : 4mo max</span>`;
+  }
 
+  
 
 
 ///////// UPLOAD PROJECT
@@ -277,7 +259,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Verifie si tous les champs sont remplis
     if (selectedFile) {
-      const token = window.localStorage.getItem("token").replace(/['"]+/g, '');
       const formData = new FormData();
       formData.append("image", selectedFile);
       formData.append("title", projectName);
@@ -308,24 +289,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (response.ok) {
-         
-       //   const data = await response.json();
+      
          console.log("it works! youhouuuu");
-      formUpload.reset();
+         nameError.innerHTML = "Image ajoutée avec succès";
+
+         // apres Upload d une image le formulaire est vide
+         categoriesError.innerHTML = "";
+         formUpload.reset();
          sectionGallery.innerHTML = "";
          await displayProjects();
-         previewContainer.innerHTML =  ``;//////////////////////////////////////////////////////////////////////////////
-         displayPreviewContainer();
-                 // apres Upload d une imgae, si on fait retour, l'Image est dans la galerie de la modal1
-      galleryModal.innerHTML = "";
-     
-      // apres Upload d une imgae, si on fait retour, l'Image est dans la galerie de la modal1
+
+         // apres Upload d une image le previewContainer est vidé et remplacé par le logo
+        displayPreviewContainer();
+        addProjectInput.value = "";
+        addProjectInput.files[0] = "";
+
+
+
+    
+
+     // apres Upload d une image l'Image est dans la galerie de la modal1
+          galleryModal.innerHTML = "";
           displayProjectsModal();
         }
-
+       
       } catch (error) {
-        nameError.innerHTML ="Veuillez remplir tous les champs";
-       // console.error("Nope", error);
+        console.log("Nope", error);
       } 
     }}
 
@@ -334,6 +323,8 @@ document.addEventListener("DOMContentLoaded", function () {
  if (formUpload) {
   formUpload.addEventListener("submit", uploadProject);///// Le displayProjects doit se faire sur l'ID du projet
  sectionGallery.innerHTML = "";
+
+
 // displayProjects();
 } else {
   console.error("Nope");
@@ -363,4 +354,5 @@ function checkInputs() {
 }
 projectName.addEventListener('input', checkInputs);
 projectCategory.addEventListener('input', checkInputs);
+
 
