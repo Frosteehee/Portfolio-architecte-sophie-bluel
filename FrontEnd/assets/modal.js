@@ -247,7 +247,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
 
-
 ///////// UPLOAD PROJECT
 
   async function uploadProject(event){
@@ -301,12 +300,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
          // apres Upload d une image le previewContainer est vidé et remplacé par le logo
         displayPreviewContainer();
-        addProjectInput.value = "";
-        addProjectInput.files[0] = "";
-
-
-
-    
 
      // apres Upload d une image l'Image est dans la galerie de la modal1
           galleryModal.innerHTML = "";
