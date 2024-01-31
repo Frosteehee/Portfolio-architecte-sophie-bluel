@@ -16,7 +16,6 @@ const projects =  getGalleryProjects();
 const filterProjects = document.createElement("button");
 const projectsCategories = getCategories();
 
-let index = 0;
 
 //Fonctions 
 
